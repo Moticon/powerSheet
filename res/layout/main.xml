@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/parchment"
+    >
+    <LinearLayout android:id="@+id/leftMenuLayout" 
+        android:layout_height="fill_parent" 
+        android:layout_width="240dip" 
+        android:orientation="vertical"
+     >
+        <TableRow android:id="@+id/characterInfo"
+           android:layout_alignParentLeft="true" 
+           android:layout_width="fill_parent" 
+           android:layout_height="fill_parent" 
+           android:background="@color/blue" 
+        >
+		    <ImageView android:id="@+id/characterIcon"
+		       android:layout_height="wrap_content" 
+		        android:src="@drawable/mayormccheese" 
+		        android:layout_width="wrap_content"
+		     ></ImageView>
+		    <TextView  android:id="@+id/characterNameText" 
+		        android:textAppearance="?android:attr/textAppearanceMedium" 
+		        android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content" 
+		        android:text="Mayor McCheese"
+		    ></TextView>  
+	    </TableRow>
+	 </LinearLayout>
+	<RelativeLayout android:id="@+id/mainSheet"
+		android:orientation="vertical"
+        android:layout_width="800dip"
+        android:layout_height="fill_parent"
+        android:background="@color/red"
+        android:layout_toRightOf="@id/leftMenuLayout"
+    >
+		<TableLayout android:id="@+id/abilitiesTable" 
+		    android:layout_height="wrap_content" 
+		    android:layout_alignParentLeft="true" 
+		    android:layout_alignParentTop="true"
+		    android:layout_width="wrap_content"
+		    android:background="@color/darkRed"
+		>
+			<TableRow android:id="@+id/titleRow" 
+			     android:layout_width="wrap_content" 
+			     android:layout_height="wrap_content"
+			>
+			    <TextView
+			        android:text="Ability"
+			        style="@style/columnHeader"
+			    ></TextView>
+			    <TextView 
+			        android:text="Score"
+			        style="@style/columnHeader"
+			    ></TextView>
+			    <TextView 
+			        android:text="Mod"
+			        style="@style/columnHeader"
+			    ></TextView>
+			</TableRow>
+			
+			<TableRow android:id="@+id/strengthRow" 
+			    android:background="@color/lightGrey"
+			>
+			    <TextView
+					style="@style/statBlock"
+			        android:text="STR"
+			    ></TextView>
+			    <TextView
+					style="@style/statBlock"
+			        android:text="18"
+			    ></TextView>
+			    <TextView
+					style="@style/statBlock"
+			        android:text="+4"
+			    ></TextView>
+			</TableRow>
+			<TableRow android:id="@+id/dexterityRow" 
+			    android:background="@color/lightGrey"
+			>
+			    <TextView
+					style="@style/statBlock"
+			        android:text="DEX"
+			    ></TextView>
+			    <TextView
+					style="@style/statBlock" 
+			        android:text="14"
+			    ></TextView>
+			    <TextView
+					style="@style/statBlock"
+			        android:text="+2"
+			    ></TextView>
+			</TableRow>
+			<TableRow android:id="@+id/constitutionRow" 
+			    android:background="@color/lightGrey"
+			>
+			    <TextView
+					style="@style/statBlock"
+			        android:text="CON"
+			    ></TextView>
+			    <TextView
+					style="@style/statBlock"
+			        android:text="12"
+			    ></TextView>
+			    <TextView
+			        android:text="+1"
+					style="@style/statBlock"
+			    ></TextView>
+			</TableRow>
+			<TableRow android:id="@+id/intelligenceRow" 
+			    android:background="@color/lightGrey"
+			>
+			    <TextView
+			        android:text="INT"
+					style="@style/statBlock"
+			    ></TextView>
+			    <TextView
+					style="@style/statBlock"  
+			        android:text="10"
+			    ></TextView>
+			    <TextView
+					style="@style/statBlock"
+			        android:text="+0"
+			    ></TextView>
+			</TableRow>
+			<TableRow android:id="@+id/wisdomRow" 
+			    android:background="@color/lightGrey"
+			>
+			    <TextView
+					style="@style/statBlock"
+			        android:text="WIS"
+			    ></TextView>
+			    <TextView
+					style="@style/statBlock"  
+			        android:text="12"
+			    ></TextView>
+			    <TextView
+					style="@style/statBlock"
+			        android:text="+1"
+			    ></TextView>
+			</TableRow>
+			<TableRow android:id="@+id/charismaRow" 
+			    android:background="@color/lightGrey"
+			>
+			    <TextView
+					style="@style/statBlock"
+			        android:text="CHA"
+			    ></TextView>
+			    <TextView
+					style="@style/statBlock" 
+			        android:text="7"
+			    ></TextView>
+			    <TextView
+					style="@style/statBlock"
+			        android:text="-2"
+			    ></TextView>
+			</TableRow>
+		</TableLayout>  
+        <include android:id="@+id/attackViews"
+           android:layout_height="fill_parent"
+           android:layout_width="fill_parent"
+           android:layout_alignRight="@id/abilitiesTable"
+           layout="@layout/attack_table"
+           android:layout_below="@id/abilitiesTable"
+        >  </include>
+        <include android:id="@+id/defenseViews"
+           android:layout_height="fill_parent"
+           android:layout_width="450dip"
+           layout="@layout/defense_view"
+           android:layout_toRightOf="@id/abilitiesTable"
+           android:layout_alignBottom="@id/abilitiesTable"
+         ></include> 
+        <include android:id="@+id/sensesViews"
+           android:layout_height="fill_parent"
+           android:layout_width="fill_parent"
+           layout="@layout/senses_view"
+           android:layout_toRightOf="@id/defenseViews"
+           android:layout_alignBottom="@id/abilitiesTable"
+         ></include>   
+        <include android:id="@+id/hitPointViews"
+           android:layout_height="250dip"
+           android:layout_width="fill_parent"
+           layout="@layout/hitpoint_view"
+           android:layout_toRightOf="@id/attackViews"
+           android:layout_below="@id/defenseViews"
+           android:layout_alignRight="@id/defenseViews"
+         ></include>   
+        <include android:id="@+id/playerNotesViews"
+           android:layout_height="fill_parent"
+           android:layout_width="fill_parent"
+           layout="@layout/playernotes_view"
+           android:layout_toRightOf="@id/attackViews"
+           android:layout_below="@id/hitPointViews"
+           android:layout_alignRight="@id/defenseViews"
+         ></include> 
+        <include android:id="@+id/skillsViews"
+           android:layout_height="fill_parent"
+           android:layout_width="fill_parent"
+           layout="@layout/skills_view"
+           android:layout_toRightOf="@id/hitPointViews"
+           android:layout_below="@id/sensesViews"
+         ></include>      
+    </RelativeLayout>
+	<RelativeLayout
+		android:orientation="vertical"
+        android:layout_width="240dip"
+        android:layout_height="fill_parent"
+        android:background="@color/green"
+        android:id="@+id/rightMenu"
+        android:layout_alignParentRight="true"
+    >
+    </RelativeLayout>
+
+</RelativeLayout>
