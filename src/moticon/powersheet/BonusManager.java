@@ -6,9 +6,12 @@ import java.util.ListIterator;
 public class BonusManager {
 	private int value;
 	private ArrayList<BonusList> list;
+	private powerSheetDbAdapter db;
 	
-	public BonusManager(ArrayList<BonusType> enchArray){
-		ListIterator<BonusType> iterator = enchArray.listIterator();
+	public BonusManager(powerSheetDbAdapter db1){
+		db = db1;
+		/*ArrayList<BonusType> typeArray = db.getAllBonuses();
+		ListIterator<BonusType> iterator = typeArray.listIterator();
 		BonusType temp;
 		list = new ArrayList<BonusList>();
 		
@@ -16,6 +19,9 @@ public class BonusManager {
 			temp = new BonusType(iterator.next());
 			list.add(new BonusList(temp.getName(),temp.getStackable()));
 		}
+		*/
+		
+		list = db.getAllBonuses();
 		value = 0;	
 	}
 	

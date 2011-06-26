@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -366,4 +367,26 @@ public class powerSheetDbAdapter {
 		}
 		return cursor;
 	}
+	
+	public ArrayList<BonusList> getAllBonuses(){
+	    ArrayList<BonusList> returnBonusList;
+	    returnBonusList = new ArrayList<BonusList>();
+	    
+	    Cursor cursor=null;
+	    try {
+	        cursor = powerSheetDb.query(typeTableName, 
+	                                    new String[] {typeColumnName, stackableColumnName},
+	                                    null, null, null, null, null);
+	    }
+	    catch (SQLException e) {
+	        Log.e(TAG, e.toString());
+	    }
+	    cursor.moveToFirst();
+	    while (!cursor.isAfterLast()){
+	        returnBonusList.add(new BonusList(cursor.getString(0), cursor.getInt(1)));    
+	        cursor.moveToNext();
+	    }
+	    return returnBonusList;
+	}
+
 }

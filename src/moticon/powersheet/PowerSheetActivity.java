@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class PowerSheetActivity extends Activity {
 	BonusManager bManager; 
+	powerSheetDbAdapter db;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,10 +24,8 @@ public class PowerSheetActivity extends Activity {
         
         testButton.setOnClickListener(onTest);
         
-        ArrayList<BonusType> testList = new ArrayList<BonusType>();
-        testList.add(new BonusType("Dodge",1));
-        testList.add(new BonusType("Competence",0));
-        bManager = new BonusManager(testList);
+        db = new powerSheetDbAdapter(this.getApplicationContext());
+        bManager = new BonusManager(db);
         
         try{
         	bManager.addBonus(new Bonus("Dodge", 2, "Strength", "Dodge Feat", 1, false));
