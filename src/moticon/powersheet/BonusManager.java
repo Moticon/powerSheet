@@ -10,7 +10,9 @@ public class BonusManager {
 	
 	public BonusManager(powerSheetDbAdapter db1){
 		db = db1;
-		/*ArrayList<BonusType> typeArray = db.getAllBonuses();
+		
+		/* Just to be sure, I'm leaving this here for now...
+		 * ArrayList<BonusType> typeArray = db.getAllBonuses();
 		ListIterator<BonusType> iterator = typeArray.listIterator();
 		BonusType temp;
 		list = new ArrayList<BonusList>();
