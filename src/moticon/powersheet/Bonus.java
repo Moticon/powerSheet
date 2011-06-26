@@ -1,57 +1,81 @@
 package moticon.powersheet;
 
+import java.lang.Override;
 /*
- * This class should be something that you create and it has nothing
- * or one bonus and associated type, and perhaps ceiling in it.
- * when ceiling is 0 then it is not a limit. 
- * 
- * as the bonus evolves you can add or remove bonuses, and get the current 
- * bonus value.
+ * The bonus class is the fundamental unit for conditions.
+ * It is a single modification to a specific attribute.
  */
 
 public class Bonus {
 	
 	private String type;
 	private int value;
-	private int ceiling;
+	private String attr;
+	private String source;
+	private int sourceId;		//The sourceId is assigned by the appropriate manager on the fly
+	private boolean magic;
 	
-	Bonus (String type, int value, int ceiling){
-		setType(type);
-		setValue(value);
-		setCeiling(ceiling);
-	}
 	
-	Bonus (String type, int value){
-		setType(type);
-		setValue(value);
-		setCeiling(0);
-	}
-	
-	Bonus(String type){
-		setType(type);
-		setValue(0);
-		setCeiling(0);
+	public Bonus(String type1, int value1, String attr1, String source1, int sourceId1, boolean magic1){
+		type = type1;
+		value = value1;
+		attr = new String(attr1);
+		source = new String(source1);
+		sourceId = sourceId1;
+		magic = magic1;
 	}
 	
-	void setType(String type){
-		this.type = type;
-	}
-	String getType(){
-		return(type);
+	public String getType(){
+		return type;
 	}
 	
-	void setValue(int value){
-		this.value = value;
-	}
-	int getValue(){
-		return(value);
+	public int getValue(){
+		return value;
 	}
 	
-	void setCeiling(int ceiling){
-		this.ceiling = ceiling;
+	public String getSource(){
+		return source;
 	}
-    int getCeiling(){
-		return(this.ceiling);
+	
+	public int getSourceId(){
+		return sourceId;
+	}
+	
+	public boolean getMagic(){
+		return magic;
+	}
+	
+	public String getAttribute(){
+		return attr;
+	}
+	
+	@Override public boolean equals(Object o){
+		//If the object is identical, then return true
+		if(this == o)
+			return true;
+		
+		// If the object is the wrong type, immediately return false
+		if(!(o instanceof Bonus))
+			return false;
+		
+		//Type cast the object and check for equality
+		Bonus leftSide = (Bonus) o;
+		return (leftSide.getSourceId() == sourceId) && (leftSide.getValue() == value) &&
+			(leftSide.getType().equals(type)) && (leftSide.getMagic() == magic) && (leftSide.getAttribute().equals(attr));
+	}
+	
+	@Override public int hashCode() {     
+		throw new UnsupportedOperationException();   
+	}
+	
+	@Override public String toString(){
+		StringBuilder result = new StringBuilder();
+		
+		if(value >= 0){
+			result.append("+");
+		}
+		result.append(value).append(" [").append(source).append("]");
+		return result.toString();
 	}
 
 }

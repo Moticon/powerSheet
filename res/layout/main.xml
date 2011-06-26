@@ -10,24 +10,39 @@
         android:layout_width="240dip" 
         android:orientation="vertical"
     >
+    	<TableLayout
+    		android:layout_height="wrap_content"
+    		android:layout_width="fill_parent"
+    		>
 	       <TableRow android:id="@+id/characterInfo"
 	           android:layout_alignParentLeft="true" 
 	           android:layout_width="fill_parent" 
 	           android:layout_height="fill_parent" 
 	           android:background="@color/blue" 
-        >
-		    <ImageView android:id="@+id/characterIcon"
-		       android:layout_height="wrap_content" 
-		        android:src="@drawable/mayormccheese" 
-		        android:layout_width="wrap_content"
-		     ></ImageView>
-		    <TextView  android:id="@+id/characterNameText" 
-		        android:textAppearance="?android:attr/textAppearanceMedium" 
-		        android:layout_width="wrap_content" 
-		        android:layout_height="wrap_content" 
-		        android:text="Mayor McCheese"
-		    ></TextView>  
-	    </TableRow>
+        	>
+			    <ImageView android:id="@+id/characterIcon"
+			       android:layout_height="wrap_content" 
+			        android:src="@drawable/mayormccheese" 
+			        android:layout_width="wrap_content"
+			     ></ImageView>
+			    <TextView  android:id="@+id/characterNameText" 
+			        android:textAppearance="?android:attr/textAppearanceMedium" 
+			        android:layout_width="wrap_content" 
+			        android:layout_height="wrap_content" 
+			        android:text="Mayor McCheese"
+			    ></TextView>  
+	    	</TableRow>
+	    </TableLayout>
+	    <TextView android:id="@+id/testDisplay"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:text="Test Place"
+	    	/>
+	    <Button android:id="@+id/showTestButton"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:text="Show Bonus"
+	    	/>
 	</LinearLayout>
 	<RelativeLayout android:id="@+id/mainSheet"
 		android:orientation="vertical"
